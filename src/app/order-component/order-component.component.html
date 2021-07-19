@@ -1,0 +1,18 @@
+<div> Order Your Burger</div>
+<p>list of available ingredients:</p>
+<ul>
+<li *ngFor="let i of availableIngredients">{{i}}</li>
+<hr>
+
+<p>Place Your Order<p>
+Ingredient: 
+   <select  (change)="onChangeName($event)">
+     <option  *ngFor="let s of StockIngredients" [value]="s.id" [label]="s.Name">{{s.Name}}</option>
+    </select>
+<button type="button" (click)="addIngredients()">Add</button> Review Ingredients <button type="button" (click)="getAllAddedIngredients()">Added Ingredients</button>
+<hr>
+ Agent: <select  (change)="onChangeAgent($event)">
+     <option  *ngFor="let s of Agents" [value]="s.id" [label]="s.Name">{{s.Name}}</option>
+    </select>
+<hr>
+<button [disabled]="getAllAddedIngredients().length==0?true:null" type="button" (click)="placeOrder()">Place Order</button>
